@@ -1,3 +1,5 @@
+import userData from '../fixtures/userData.json'
+
 describe('oragem hrm test', () => {
 
 const selectorlist = {
@@ -10,15 +12,16 @@ const selectorlist = {
 
   it('login - sucess', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectorlist.usernamefield).type("admin")
-    cy.get(selectorlist.passwordfield).type("admin123")
+    cy.get(selectorlist.usernamefield).type(userData.usersucess.username)
+    cy.get(selectorlist.passwordfield).type(userData.usersucess.password)
     cy.get(selectorlist.loginbutton).click()
     cy.get(selectorlist.SelectiontitleTopbar)
   })
    it('login - fail', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
-    cy.get(selectorlist.usernamefield).type("test")
-    cy.get(selectorlist.passwordfield).type("test123")
+    cy.get(selectorlist.usernamefield).type(userData.userfail.username)
+    cy.get(selectorlist.passwordfield).type(userData.userfail.password
+    )
     cy.get(selectorlist.loginbutton).click()
     cy.get(selectorlist.wrongcredentialAlert)
   })
