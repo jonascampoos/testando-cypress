@@ -13,14 +13,14 @@ const selectorlist = {
   middlenamefield: "[name='middleName']",
   lastnamefield: "[name='lastName']",
   genericfield: ".oxd-input",
-  datafield: ':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input > .oxd-input',
+  datafield: "[placeholder='yyyy-dd-mm']",
   closebutton: ".--close",
   savebutton: "[type='submit']",
   nationalitybutton: "[clear='false']",
-  nationalityamericanbutton: '.oxd-select-dropdown > :nth-child(5)',
-  maritalstatusbutton: ':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text',
+  nationalityamericanbutton: '.oxd-select-dropdown > :nth-child(27)',
+  maritalstatusbutton: "[clear='false']",
   maritalsiglebutton: '.oxd-select-dropdown > :nth-child(2)',
-  datanascimento: ':nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-date-wrapper > .oxd-date-input > .oxd-input'
+  datanascimento: "[placeholder='yyyy-dd-mm']"
 }
 
   it.only('login - sucess', () => {
@@ -37,12 +37,12 @@ const selectorlist = {
     cy.get(selectorlist.genericfield).eq(5).clear ().type("1254")
     cy.get(selectorlist.genericfield).eq(6).clear ().type("45554")
     cy.get(selectorlist.datafield).eq(0).clear ().type("2025-03-01")
-    cy.get(selectorlist.closebutton). click()
+    cy.get(selectorlist.closebutton). click({force: true})
     cy.get(selectorlist.nationalitybutton).eq(0). click()
     cy.get(selectorlist.nationalityamericanbutton). click ()
-    cy.get(selectorlist.maritalstatusbutton). click()
+    cy.get(selectorlist.maritalstatusbutton).eq(1). click()
     cy.get(selectorlist.maritalsiglebutton). click()
-    cy.get(selectorlist.datanascimento).clear ().type("2002-03-09")
+    cy.get(selectorlist.datanascimento).eq(1).clear ({force:true}).type("2002-03-09")
     cy.get(selectorlist.closebutton). click()
     cy.get(selectorlist.savebutton).eq(0). click()
     cy.get('body').should('contain', 'Successfully Updated')
