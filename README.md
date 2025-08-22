@@ -4,7 +4,7 @@ este projeto tem como objetivo automaizar os testes do sistema **oragemHRMN**, g
 
 ## Como instalar e rodar o projeto
 
-´´´bash
+```bash
 # Clone o repositorio
 git clone
 https://github.com/jonascampoos/testando-cypress.git
